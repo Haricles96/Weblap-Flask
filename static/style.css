@@ -21,11 +21,12 @@ body {
   text-align: left;
   max-width: 800px;
 }
-
-#facebook_icon{
+.icon{
+  margin: auto;
+  font-size: 	1.6em;
   color: blanchedalmond;
-  padding: 0.5em
 }
+
 
 #rendeles_gomb{
   margin-left: 350px;
@@ -70,3 +71,8 @@ body {
 #osszeg{
   color: blanchedalmond;
 }
+
+.card-images{
+  height: 183px;
+}
+  
