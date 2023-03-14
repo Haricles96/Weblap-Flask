@@ -82,8 +82,8 @@ def kosar_2():
 
 @app.route("/kosar_torles", methods=["POST"])
 def kosar_ürites():
-    for elem in kosaram:
-        kosaram.remove(elem)    
+    for _ in kosaram:
+        kosaram.clear() 
     return render_template("kosar.html",kosaram=kosaram)
 
 if __name__== "__main__":
