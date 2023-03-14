@@ -1,0 +1,72 @@
+body {
+  background-image: url("pizza_hatter.jpg");
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+  background-size:cover;
+  }
+
+#üdvözlo_szoveg{
+  color: blanchedalmond;
+  text-align: center;
+}
+
+#elerhetoseg{
+  color:blanchedalmond;
+  
+}
+
+#leiras_rolunk{
+  color: blanchedalmond;
+  margin-left: 40px;
+  text-align: left;
+  max-width: 800px;
+}
+
+#facebook_icon{
+  color: blanchedalmond;
+  padding: 0.5em
+}
+
+#rendeles_gomb{
+  margin-left: 350px;
+  font-size:larger;
+}
+
+.card{
+  color: blanchedalmond;
+  text-align: center;
+}
+
+.btn-primary{
+  color:blanchedalmond;
+  margin: auto;
+}
+
+#adataim{
+  color: blanchedalmond;
+}
+.form-label{
+  color: blanchedalmond;
+}
+.form-control{
+  max-width: 700px;
+  background-color:gainsboro;
+}
+.form-check-label{
+  color: blanchedalmond;
+}
+
+.bg-dark{
+  padding: 7px;
+  border-color:blanchedalmond;
+}
+
+#test{
+  color: blanchedalmond;
+  font-size: 70px;
+  margin: 200px;
+}
+
+#osszeg{
+  color: blanchedalmond;
+}

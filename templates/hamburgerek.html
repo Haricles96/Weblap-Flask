@@ -1,0 +1,23 @@
+{% extends "kezdolap.html" %}
+{% block title %} Hamburgerek {% endblock title %}
+{% block udvozles %}{% endblock udvozles %}
+{% block elerhetoseg %}{% endblock elerhetoseg %}
+{% block rendeles_gomb %}
+
+<div class="container">
+  <div class="row">
+{% for key in hamburgerek %}
+    <div class="card bg-dark" style="width: 18rem;">
+      <img src="/static/hambi.jpg" class="card-img-top" alt="...">
+      <div class="card-body row">
+        <h5 class="card-title ">{{key['Name']}}</h5>
+        <p class="card-text">{{key['Desc']}}</p>
+        <a href="{{ url_for('ürlap') }}" class="btn btn-primary bg-dark">Kosárba</a>
+      </div>
+    </div>
+
+{% endfor %}
+  </div>
+</div>
+
+{% endblock rendeles_gomb %}

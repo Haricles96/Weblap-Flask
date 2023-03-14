@@ -1,0 +1,29 @@
+{% extends "elerhetoseg.html" %}
+{% block title %} Rendelés {% endblock title %}
+{% block elerhetoseg %}{% endblock elerhetoseg %}
+{% block rendeles_gomb %}
+
+<div class="container">
+  <div class="row">
+{% for key in etelek %}
+    <div class="card bg-dark" style="width: 18rem;">
+      {% if key['Name']== "Pizza" %}
+      <img src="/static/pizza_valasztek.jpg" class="card-img-top" alt="...">
+      <div class="card-body row">
+        <h5 class="card-title ">{{key['Name']}}</h5>
+        <p class="card-text">Válasszon a legfinomabb ajánlatainkból.</p>
+        <a href="{{url_for('pizza')}}" class="btn btn-primary bg-dark">Kiválaszt</a> 
+      </div>
+      {% elif key['Name'] == "Hamburger" %}
+      <img src="/static/hambi_valasztek.jpg" class="card-img-top" alt="...">
+      <div class="card-body row">
+        <h5 class="card-title ">{{key['Name']}}</h5>
+        <p class="card-text">Válasszon a legfinomabb ajánlatainkból.</p>
+        <a href="{{url_for('hamburger')}}" class="btn btn-primary bg-dark">Kiválaszt</a> 
+      </div>
+      {% endif %}
+    </div>
+{% endfor %}
+  </div>
+</div>
+{% endblock rendeles_gomb %}

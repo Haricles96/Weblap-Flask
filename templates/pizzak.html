@@ -1,0 +1,30 @@
+{% extends "kezdolap.html" %}
+{% block title %} Rendelés {% endblock title %}
+{% block udvozles %}{% endblock udvozles %}
+{% block elerhetoseg %}{% endblock elerhetoseg %}
+{% block rendeles_gomb %}
+
+
+<div class="container">
+  <div class="row">
+    {% for pizza in pizzak %}
+
+    <div class="card bg-dark" style="width: 18rem;">
+      <img src="/static/pizza.jpg" class="card-img-top" alt="...">
+      <div class="card-body bg-dark">
+        <h5 class="card-title bg-dark">{{pizza["Name"]}}</h5>
+        <p class="card-text bg-dark">{{pizza["Desc"]}}</p>
+        <p class="card-text bg-dark">Ár: {{pizza["Ar"]}} Ft</p>
+      </div>
+      <form action="/kosarhoz_ad" method="POST">
+        <input type="hidden" name="nev" value="{{ pizza['Name'] }}">
+        <input type="hidden" name="ara" value="{{ pizza['Ar'] }}">
+        <button class="btn btn-primary bg-dark" type="submit"> Kosárba </button>
+      </form>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+{% endblock rendeles_gomb %}

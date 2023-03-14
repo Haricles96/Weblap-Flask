@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>Pizza rendelés</title>
+</head>
+<body>
+    <h1>Pizza választék</h1>
+    {% for pizza in pizzak %}
+        <div class="pizza-kartya">
+            <h2>{{ pizza['név'] }}</h2>
+            <p>Feltétek: {{ ', '.join(pizza['feltétek']) }}</p>
+            <p>Ár: {{ pizza['ár'] }} Ft</p>
+            <form action="/kosarhoz_ad" method="POST">
+                <input type="hidden" name="nev" value="{{ pizza['név'] }}">
+                <input type="hidden" name="ara" value="{{ pizza['ár'] }}">
+                <button type="submit">Kosárba</button>
+            </form>
+        </div>
+    {% endfor %}
+</body>
+</html>
