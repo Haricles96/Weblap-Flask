@@ -84,6 +84,7 @@ def kosar_2():
 def kosar_ürites():
     for _ in kosaram:
         kosaram.clear() 
+        return redirect("/kosar")
     return render_template("kosar.html",kosaram=kosaram)
 
 if __name__== "__main__":

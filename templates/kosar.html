@@ -14,16 +14,19 @@
         </form>
         <h5 id="osszeg"> 1db {{ k["név"] }} pizza | Ár:{{ k["ár"] }} Ft </h5>
         {% endfor %}
+        {% if osszeg == 0 %}
+        <h4>Az Ön kosara jelenleg üres.</h4>
+        {% else  %}
         <h4> Összesen: {{ osszeg }} Ft</h4>
+        <a href="{{ url_for('ürlap') }}" class="btn btn-primary bg-dark">Rendelés</a>
+        <div class="container">
+          <form action="/kosar_torles" method="POST">
+            <button class="btn btn-primary bg-dark" type="submit"> Kosár törlése </button>
+          </form>
+        </div>
+        {% endif %} 
       </p>
-      <div class="container">
-      <a href="{{ url_for('ürlap') }}" class="btn btn-primary bg-dark">Rendelés</a>
-      
-      <form action="/kosar_torles" method="POST">
-        <button class="btn btn-primary bg-dark" type="submit"> Kosár törlése </button>
-      </form>
-      
-    </div>
+
 </div>
 <a href="{{ url_for('pizza') }}" class="btn btn-primary bg-dark">Vissza a pizzákhoz </a>
 
