@@ -6,17 +6,22 @@
 
 <div class="container">
   <div class="row">
-{% for key in hamburgerek %}
-    <div class="card bg-dark" style="width: 18rem;">
-      <img src="/static/hambi.jpg" class="card-img-top" alt="...">
-      <div class="card-body row">
-        <h5 class="card-title ">{{key['Name']}}</h5>
-        <p class="card-text">{{key['Desc']}}</p>
-        <a href="{{ url_for('ürlap') }}" class="btn btn-primary bg-dark">Kosárba</a>
-      </div>
-    </div>
+    {% for hambi in hamburgerek %}
 
-{% endfor %}
+    <div class="card bg-dark" style="width: 18rem;">
+      <img src="/static/pizza.jpg" class="card-img-top"  alt="..." >
+      <div class="card-body bg-dark">
+        <h5 class="card-title bg-dark">{{hambi["Name"]}}</h5>
+        <p class="card-text bg-dark">{{hambi["Desc"]}}</p>
+        <p class="card-text bg-dark">Ár: {{hambi["Ar"]}} Ft</p>
+      </div>
+      <form action="/kosarhoz_ad" method="POST">
+        <input type="hidden" name="nev" value="{{ hambi['Name'] }}">
+        <input type="hidden" name="ara" value="{{ hambi['Ar'] }}">
+        <button class="btn btn-primary bg-dark" type="submit"> Kosárba </button>
+      </form>
+    </div>
+    {% endfor %}
   </div>
 </div>
 

@@ -23,14 +23,12 @@
           <form action="/kosar_torles" method="POST">
             <button class="btn btn-primary bg-dark" type="submit"> Kosár törlése </button>
           </form>
+          <a href="{{ url_for('rendeles') }}" class="btn btn-primary bg-dark">Vissza az étlaphoz </a>
         </div>
-        {% endif %} 
-      </p>
-
+        {% endif %}
+    </div> 
+  </p>   
 </div>
-<a href="{{ url_for('pizza') }}" class="btn btn-primary bg-dark">Vissza a pizzákhoz </a>
-
-
 
 
   {% endblock elerhetoseg %}

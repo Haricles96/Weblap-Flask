@@ -70,13 +70,15 @@ def kosar():
     osszeg=0
     for pizza in kosaram:
         osszeg += pizza["ár"]
-    return render_template("kosar.html", kosaram=kosaram, osszeg=osszeg)
+        
+    return render_template("kosar.html", kosaram=kosaram, osszeg=osszeg,hamburgerek=hamburgerek)
 
 @app.route("/kosar_2")
 def kosar_2():
     osszeg=0
     for pizza in kosaram:
         osszeg -= pizza["ár"]
+        return redirect("/kosar")
     return render_template("kosar.html", kosaram=kosaram, osszeg=osszeg)
 
 
