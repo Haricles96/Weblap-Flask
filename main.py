@@ -6,6 +6,8 @@ from wtforms.validators import DataRequired, Length
 
 app=Flask(__name__)
 
+app.config['SECRET_KEY']="28caf2c60b3e26676be6dec167e2f70f"
+
 kosaram=[]
 
 @app.route("/")
@@ -37,6 +39,10 @@ def hamburger():
 def pizza():
     return render_template("pizzak.html",pizzak=pizzak)
 
+@app.route("/sikeres_rendeles")
+def sikeres_rendeles():
+    return render_template("sikeres_rendeles.html")
+
 
 @app.route("/ürlap",methods=["GET","POST"])
 def ürlap():
@@ -55,6 +61,7 @@ def ürlap():
        hszam=request.form.get('hszam')
        szallitasi_cim.append({"email":email,"vnev":vnev,"knev":knev,"telefonszam":tel,"irszam":irszam ,"varos":varos,"utca":utca,"hszam":hszam,"kosár":kosaram})
        print (szallitasi_cim)
+       return redirect(url_for("sikeres_rendeles"))
     return render_template("rendeles_ürlap.html",kosaram=kosaram,szamlalo=szamlalo)
 
 
@@ -69,8 +76,7 @@ def kosarhoz_ad():
 def kosar():
     osszeg=0
     for pizza in kosaram:
-        osszeg += pizza["ár"]
-        
+        osszeg += pizza["ár"]    
     return render_template("kosar.html", kosaram=kosaram, osszeg=osszeg,hamburgerek=hamburgerek)
 
 @app.route("/kosar_2")

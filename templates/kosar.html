@@ -16,6 +16,7 @@
         {% endfor %}
         {% if osszeg == 0 %}
         <h4>Az Ön kosara jelenleg üres.</h4>
+        <a href="{{ url_for('rendeles') }}" class="btn btn-primary bg-dark"> Rendelés</a>
         {% else  %}
         <h4> Összesen: {{ osszeg }} Ft</h4>
         <a href="{{ url_for('ürlap') }}" class="btn btn-primary bg-dark">Rendelés</a>
