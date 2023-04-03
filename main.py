@@ -1,8 +1,6 @@
 from flask import Flask,redirect,url_for,render_template,request
 from valasztek import pizzak,hamburgerek,etelek
-from flask_wtf import FlaskForm
-from wtforms import StringField, DateField, SubmitField
-from wtforms.validators import DataRequired, Length
+from form import Rendeles_ürlap_
 
 app=Flask(__name__)
 
@@ -41,28 +39,23 @@ def pizza():
 
 @app.route("/sikeres_rendeles")
 def sikeres_rendeles():
-    return render_template("sikeres_rendeles.html")
+    form=Rendeles_ürlap_()
+    return render_template("sikeres_rendeles.html",form=form)
 
 
 @app.route("/ürlap",methods=["GET","POST"])
 def ürlap():
+    form = Rendeles_ürlap_()
     szamlalo=0
     szallitasi_cim=[]
     for kosar in kosaram:
         szamlalo+= int(kosar["ár"])
     if request.method== "POST":
-       email=request.form.get('email')
-       vnev=request.form.get('vnev') 
-       knev=request.form.get('knev')
-       tel=request.form.get('tel') 
-       irszam=request.form.get('irszam') 
-       varos=request.form.get('varos')
-       utca=request.form.get('utca')
-       hszam=request.form.get('hszam')
-       szallitasi_cim.append({"email":email,"vnev":vnev,"knev":knev,"telefonszam":tel,"irszam":irszam ,"varos":varos,"utca":utca,"hszam":hszam,"kosár":kosaram})
-       print (szallitasi_cim)
-       return redirect(url_for("sikeres_rendeles"))
-    return render_template("rendeles_ürlap.html",kosaram=kosaram,szamlalo=szamlalo)
+        if form.validate_on_submit():
+            szallitasi_cim.append({"email":form.email.data,"vnev":form.vnev.data,"knev":form.knev.data,"telefonszam":form.tel.data,"irszam":form.irsz.data,"varos":form.varos.data,"utca":form.utca.data,"hszam":form.hszam.data,"kosár":kosaram})
+            print (szallitasi_cim)
+            return redirect(url_for("sikeres_rendeles"))
+    return render_template("rendeles_ürlap.html",kosaram=kosaram,szamlalo=szamlalo,form=form)
 
 
 @app.route("/kosarhoz_ad", methods=["POST"])

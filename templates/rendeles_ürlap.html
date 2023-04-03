@@ -1,49 +1,45 @@
 {% extends "elerhetoseg.html" %}
 
 
-
 {% block elerhetoseg %}
 {% block one %} {% endblock one %}
 
-<form action="/ürlap" method="POST">
+<form action="" method="POST">
+  {{ form.hidden_tag() }}
     <div class="mb-3">
-        <h4 class="form-label">Adataim</h4>
-      <label for="exampleInputEmail1" class="form-label">E-mail*</label>
-      <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="pelda@gmail.com">
+      {{ form.email.label(class="form-label") }}
+      {{ form.email(class="form-control",placeholder="pelda@valami.hu") }}
     </div>
     <div class="mb-3">
-      <label class="form-label">Vezetéknév*</label>
-      <input type="text" class="form-control" name="vnev" id="vnev" placeholder="Példa">
+      {{ form.vnev.label(class="form-label") }}
+      {{ form.vnev(class="form-control",placeholder="Nagy") }}
     </div>
     <div class="mb-3">
-        <label class="form-label">Keresztnév*</label>
-        <input type="text" class="form-control" name="knev" id="knev" placeholder="Géza">
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Telefonszám*</label>
-        <input type="text" class="form-control" name="tel" id="tel" placeholder="+36305465745">
-      </div>
-    <h4 class="form-label">Szállítási címem</h4>
-    <div class="mb-3">
-        <label class="form-label">Irányítószám*</label>
-        <input type="text" class="form-control" name="irszam" id="irszam" placeholder="Pl. 1024">
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Város*</label>
-        <input type="text" class="form-control" name="varos" id="varos" placeholder="Buják">
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Utca*</label>
-        <input type="text" class="form-control" name="utca" id="utca" placeholder="Pl. Arany János utca">
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Ház szám*</label>
-        <input type="text" class="form-control" name="hszam" id="hszam" placeholder="Pl. 4">
-      </div>
-    <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Elfogadom az általános szerződési feltételeket.</label>
+      {{ form.knev.label(class="form-label") }}
+      {{ form.knev(class="form-control",placeholder="Ferenc") }}
     </div>
+    <div class="mb-3">
+      {{ form.tel.label(class="form-label") }}
+      {{ form.tel(class="form-control",placeholder="+36301234567") }}
+    </div>
+    <div class="mb-3">
+      {{ form.varos.label(class="form-label") }}
+      {{ form.varos(class="form-control",placeholder="Budapest") }}
+    </div>
+    <div class="mb-3">
+      {{ form.irsz.label(class="form-label") }}
+      {{ form.irsz(class="form-control",placeholder="1234") }}
+    </div>
+    <div class="mb-3">
+      {{ form.utca.label(class="form-label") }}
+      {{ form.utca(class="form-control",placeholder="Pelda utca") }}
+    </div>
+    <div class="mb-3">
+      {{ form.hszam.label(class="form-label") }}
+      {{ form.hszam(class="form-control", placeholder="34") }}
+    </div>
+
+
 
   <div class="card text-center bg-dark">
     <div class="card-body bg-dark">
@@ -54,7 +50,8 @@
         {% endfor %}
       </p>
       <p>Összesen fizetendő: {{ szamlalo }} Ft</p>
-      <button type="submit" class="btn btn-outline-danger">Rendelés</button>
+      
+      {{ form.submit(class="btn btn-outline-danger") }}
       <a href="{{ url_for('pizza') }}" class="btn btn-primary bg-dark">Vissza a pizzákhoz </a>
     </div>   
   </div>
