@@ -79,3 +79,8 @@ body {
 #sikeres_rendeles{
   color: blanchedalmond;
 }
+
+#message{
+  text-align: center;
+  width: auto;
+}

@@ -1,4 +1,4 @@
-from flask import Flask,redirect,url_for,render_template,request
+from flask import Flask,redirect,url_for,render_template,request,flash
 from valasztek import pizzak,hamburgerek,etelek
 from form import Rendeles_ürlap_
 
@@ -37,24 +37,22 @@ def hamburger():
 def pizza():
     return render_template("pizzak.html",pizzak=pizzak)
 
-@app.route("/sikeres_rendeles")
-def sikeres_rendeles():
-    form=Rendeles_ürlap_()
-    return render_template("sikeres_rendeles.html",form=form)
-
 
 @app.route("/ürlap",methods=["GET","POST"])
 def ürlap():
     form = Rendeles_ürlap_()
     szamlalo=0
-    szallitasi_cim=[]
+    szallitasi_adatok=[]
     for kosar in kosaram:
         szamlalo+= int(kosar["ár"])
     if request.method== "POST":
         if form.validate_on_submit():
-            szallitasi_cim.append({"email":form.email.data,"vnev":form.vnev.data,"knev":form.knev.data,"telefonszam":form.tel.data,"irszam":form.irsz.data,"varos":form.varos.data,"utca":form.utca.data,"hszam":form.hszam.data,"kosár":kosaram})
-            print (szallitasi_cim)
-            return redirect(url_for("sikeres_rendeles"))
+            szallitasi_adatok.append({"email":form.email.data,"vnev":form.vnev.data,"knev":form.knev.data,"telefonszam":form.tel.data,"irszam":form.irsz.data,"varos":form.varos.data,"utca":form.utca.data,"hszam":form.hszam.data,"kosár":kosaram})
+            print (szallitasi_adatok)
+            flash("Sikeres rendelés!","success")
+            kosar_ürites()
+            szamlalo=0
+            return redirect(url_for("ürlap"))   
     return render_template("rendeles_ürlap.html",kosaram=kosaram,szamlalo=szamlalo,form=form)
 
 
